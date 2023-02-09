@@ -1,0 +1,39 @@
+{{- if not .Values.parent }}
+{{- $globalConfig := .Values }}
+{{- $path := printf "**/%s.yaml" .Values.env }}
+{{- range $key, $value := .Files.Glob $path }}
+{{- $appConfig := $.Files.Get $key | fromYaml }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $appConfig.chart.name }}-{{ $globalConfig.env }}
+  namespace: {{ $globalConfig.source.namespace }}
+  labels:
+    env: {{ $globalConfig.env }}
+    app: {{ $appConfig.chart.name }}
+{{ required "labels field is required"  $appConfig.labels | toYaml | indent 4 }}
+spec:
+  source:
+{{- if $appConfig.chart.path }}
+    path: {{ $appConfig.chart.path }}
+    repoURL: {{ $appConfig.chart.url }}
+{{- else }}
+    chart: {{ $appConfig.chart.name }}
+    repoURL: {{ $appConfig.chart.url }}
+    targetRevision: {{ $appConfig.chart.targetRevision }}
+{{- end }}
+{{- if $appConfig.values }}
+    helm:
+      values: |
+{{ $appConfig.values | indent 8 }}
+{{- end }}
+  destination:
+    namespace: {{ $appConfig.chart.namespace }}
+    server: {{ $globalConfig.destination.server }}
+  project: {{ $globalConfig.project }}
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+{{- end }}
+{{- end }}

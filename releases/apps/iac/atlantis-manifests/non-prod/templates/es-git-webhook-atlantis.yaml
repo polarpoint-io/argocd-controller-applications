@@ -1,0 +1,28 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: git-webhook-atlantis
+  namespace: infra
+spec:
+  refreshInterval: 24h0m0s
+  secretStoreRef:
+    name: cluster-secrets-store
+    kind: ClusterSecretStore
+  target:
+    name: git-webhook-atlantis
+    template:
+      data:
+        github_token: >-
+          {{ printf "{{ .github_token | toString }}" }}
+        github_secret: >-
+          {{ printf "{{ .github_webhook_secret | toString }}" }}
+  data:
+    - secretKey: github_token
+      remoteRef:
+        key: atlantis-credentials
+        property: github-personal-access-token
+    - secretKey: github_webhook_secret
+      remoteRef:
+        key: atlantis-credentials
+        property: github-webhook-secret

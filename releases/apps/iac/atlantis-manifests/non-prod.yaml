@@ -1,0 +1,17 @@
+
+---
+chart:
+  name: atlantis-manifests
+  path: releases/apps/iac/atlantis-manifests/non-prod
+  url: git@github.com:polarpoint-io/argocd-tooling-applications.git
+  targetRevision: main
+  recurseDirectory: false
+  namespace: infra
+  
+labels:
+  service: tooling
+  app: infra
+
+syncPolicy:
+  prune: false
+  selfHeal: false

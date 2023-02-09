@@ -1,0 +1,23 @@
+---
+apiVersion: ansible.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: provider-config-ansible
+spec:
+  # Note that unlike most provider configs this one supports an array of
+  # credentials. This is because each Ansible playbook uses a single
+  # Crossplane provider config, but could use multiple providers each
+  # with their own credentials.
+  credentials:
+    - filename: gcp-credentials.json
+      source: Secret
+      secretRef:
+        namespace: iac
+        name: gcp-account-creds
+        key: credentials
+  requirements: |
+    ---
+    collections:
+      - name: google.cloud
+        source: https://galaxy.ansible.com
+        version: "1.0.2"

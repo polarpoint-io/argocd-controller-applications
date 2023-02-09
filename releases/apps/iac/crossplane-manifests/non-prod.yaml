@@ -1,0 +1,15 @@
+chart:
+  name: crossplane-manifests
+  path: releases/apps/iac/crossplane-manifests/non-prod
+  url: git@github.com:polarpoint-io/argocd-tooling-applications.git
+  targetRevision: main
+  recurseDirectory: false
+  namespace: iac
+
+labels:
+  service: tooling
+
+syncPolicy:
+  prune: false
+  selfHeal: false
+  

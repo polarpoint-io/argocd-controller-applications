@@ -1,0 +1,22 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: git-config-atlantis
+  namespace: infra
+spec:
+  refreshInterval: 24h0m0s
+  secretStoreRef:
+    name: cluster-secrets-store
+    kind: ClusterSecretStore
+  target:
+    name: git-config-atlantis
+    template:
+      data:
+        gitconfig: >- 
+          {{ printf "{{ .git_config | toString }}" }}
+  data:
+    - secretKey: git_config
+      remoteRef:
+        key: atlantis-credentials
+        property: git-config

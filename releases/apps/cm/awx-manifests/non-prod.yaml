@@ -1,0 +1,13 @@
+chart:
+  name: awx-manifests
+  path: releases/apps/cm/awx-manifests/non-prod
+  url: git@github.com:polarpoint-io/argocd-tooling-applications.git
+  targetRevision: master
+  recurseDirectory: false
+  namespace: config
+
+labels:
+  service: tooling
+
+
+  

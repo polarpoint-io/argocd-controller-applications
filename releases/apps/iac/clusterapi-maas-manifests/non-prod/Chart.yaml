@@ -1,0 +1,6 @@
+apiVersion: v2
+name: clusterapi-maas-manifests
+description: Custom manifests for clusterapi access to MAAS
+type: application
+version: 0.1.0
+

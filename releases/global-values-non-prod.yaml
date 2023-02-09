@@ -1,0 +1,15 @@
+# Global configuration for all applications
+#
+parent: false
+env: non-prod
+project: deploy
+
+source:
+  server: https://kubernetes.default.svc
+  namespace: cd
+
+
+destination:
+  server: https://kubernetes.default.svc
+  namespace: deploy
+

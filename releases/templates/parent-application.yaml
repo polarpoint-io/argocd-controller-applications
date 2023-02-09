@@ -1,0 +1,42 @@
+{{- if .Values.parent }}
+{{- range .Values.applications }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  {{- if .enableCascade }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  {{- end }}    
+  name: {{ .name }}
+  namespace: {{ $.Values.global.namespace}}
+spec:
+  source:
+    path: {{ .source.path }}
+    repoURL: {{ .source.repoURL }}
+    targetRevision: {{ .source.targetRevision }}
+{{- if .directory }}
+    directory:
+      recurse: {{ .recurseDirectory | default "false" }}
+{{- else }}
+    helm:
+      valueFiles:
+        - {{ .source.valuesFile | default "values.yaml" }}
+{{- end }}
+  project: {{ .project }}          
+  destination: 
+    server: {{ .targetCluster | default $.Values.global.defaultCluster }}
+    namespace: {{ $.Values.global.namespace }}
+  syncPolicy:
+    automated:
+{{- if .syncPolicy }}
+      selfHeal: {{ .syncPolicy.automated.selfHeal }}  
+      prune: {{ .syncPolicy.automated.prune }}
+{{- else }}
+      selfHeal: {{ $.Values.global.syncPolicy.automated.selfHeal }}  
+      prune: {{ $.Values.global.syncPolicy.automated.prune }}
+{{- end }}
+    syncOptions:
+    - CreateNamespace=true
+{{- end }}
+{{- end }}

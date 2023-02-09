@@ -1,0 +1,24 @@
+# Global configuration for all applications
+# This values file will only create parent applications
+parent: true
+
+global:
+  defaultCluster: https://kubernetes.default.svc
+  namespace: cd
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+
+
+applications:
+  deploy-applications:
+    name: deploy-applications
+    description: deploy argocd applications
+    project: deploy
+    source:
+      repoURL: git@github.com:polarpoint-io/argocd-deploy-applications.git
+      path: releases
+      targetRevision: main
+      valuesFile: "global-values-non-prod.yaml"
+
