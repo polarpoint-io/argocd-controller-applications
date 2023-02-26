@@ -1,15 +1,15 @@
 
 ---
 chart:
-  name: tooling-nginx-manifests
-  path: releases/apps/tooling-nginx-manifests/non-prod
+  name: controller-nginx-manifests
+  path: releases/apps/controller-nginx-manifests/non-prod
   url: git@github.com:polarpoint-io/argocd-controller-applications.git
   targetRevision: main
   recurseDirectory: false
   namespace: ingress-nginx
   
 labels:
-  service: tooling
+  service: controller
   app: ingress-nginx
 
 syncPolicy:
