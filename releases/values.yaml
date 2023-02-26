@@ -14,8 +14,8 @@ global:
 applications:
   controller-applications:
     name: controller-applications
-    description: deploy argocd applications
-    project: deploy
+    description: controller argocd applications
+    project: controller
     source:
       repoURL: git@github.com:polarpoint-io/argocd-controller-applications.git
       path: releases
