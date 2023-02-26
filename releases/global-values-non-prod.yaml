@@ -2,7 +2,7 @@
 #
 parent: false
 env: non-prod
-project: deploy
+project: controller
 
 source:
   server: https://kubernetes.default.svc
@@ -11,5 +11,5 @@ source:
 
 destination:
   server: https://kubernetes.default.svc
-  namespace: deploy
+  namespace: controller
 

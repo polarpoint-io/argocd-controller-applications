@@ -1,1 +1,1 @@
-# argocd-deploy-applications
+# argocd-controller-applications

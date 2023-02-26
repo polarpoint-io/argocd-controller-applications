@@ -1,7 +1,7 @@
 chart:
   name: atlantis
   path: releases/apps/atlantis/prod
-  url: git@github.bel2.internal.ru.com:RUNA/argocd-deploy-applications.git
+  url: git@github.bel2.internal.ru.com:RUNA/argocd-controller-applications.git
   targetRevision: main
   recurseDirectory: false
   namespace: infra

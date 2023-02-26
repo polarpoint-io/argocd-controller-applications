@@ -1,7 +1,7 @@
 chart:
   name: harbor
   path: releases/apps/cd/harbor/non-prod
-  url: git@github.com:polarpoint-io/argocd-tooling-applications.git
+  url: git@github.com:polarpoint-io/argocd-controller-applications.git
   targetRevision: master
   recurseDirectory: true
   namespace: cd

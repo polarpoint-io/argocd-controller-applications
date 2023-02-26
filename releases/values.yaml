@@ -12,12 +12,12 @@ global:
 
 
 applications:
-  deploy-applications:
-    name: deploy-applications
+  controller-applications:
+    name: controller-applications
     description: deploy argocd applications
     project: deploy
     source:
-      repoURL: git@github.com:polarpoint-io/argocd-deploy-applications.git
+      repoURL: git@github.com:polarpoint-io/argocd-controller-applications.git
       path: releases
       targetRevision: main
       valuesFile: "global-values-non-prod.yaml"
