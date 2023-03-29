@@ -7,7 +7,7 @@ chart:
   namespace: infra
 
 labels:
-  service: tooling
+  service: controller
 
 
 syncPolicy:

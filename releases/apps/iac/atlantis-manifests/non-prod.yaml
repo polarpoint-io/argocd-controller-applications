@@ -9,7 +9,7 @@ chart:
   namespace: infra
   
 labels:
-  service: tooling
+  service: controller
   app: infra
 
 syncPolicy:

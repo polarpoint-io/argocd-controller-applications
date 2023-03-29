@@ -7,5 +7,5 @@ chart:
   namespace: cd
 
 labels:
-  service: tooling
+  service: controller
   app: harbor

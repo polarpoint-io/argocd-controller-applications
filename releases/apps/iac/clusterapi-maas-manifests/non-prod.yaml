@@ -7,7 +7,7 @@ chart:
   namespace: iac
 
 labels:
-  service: tooling
+  service: controller
 
 syncPolicy:
   prune: false

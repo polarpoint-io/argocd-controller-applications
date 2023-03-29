@@ -1,6 +1,6 @@
 apiVersion: v2
 appVersion: 0.1.0
-description: deploy ArgoCD Applications
-name: deploy ArgoCD Applciations
+description: controller ArgoCD Applications
+name: controller ArgoCD Applciations
 version: 0.1.0
 icon: https://raw.githubusercontent.com/polarpoint-io/images-icons-avatars/master/assets/img/polarpoint.png
