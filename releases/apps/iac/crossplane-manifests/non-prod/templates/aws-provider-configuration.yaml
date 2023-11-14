@@ -1,0 +1,12 @@
+---
+apiVersion: aws.crossplane.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: aws-pc
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: iac
+      name: aws-secret
+      key: creds
