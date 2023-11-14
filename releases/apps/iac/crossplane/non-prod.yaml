@@ -16,10 +16,6 @@ values: |
 
   deploymentStrategy: RollingUpdate
 
-  image:
-    repository: crossplane/crossplane
-    tag: v1.8.1
-    pullPolicy: IfNotPresent
 
   nodeSelector: {}
   tolerations: {}
