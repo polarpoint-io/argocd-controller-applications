@@ -12,7 +12,7 @@ syncPolicy:
   selfHeal: false
 
 values: |
-  replicas: 1
+  replicas: 2
 
   deploymentStrategy: RollingUpdate
 
@@ -35,7 +35,7 @@ values: |
   args: {}
 
   # How frequently Crossplane may reconcile its resources (seconds). Default: 10
-  maxReconcileRate: ""
+  maxReconcileRate: "100"
 
   provider:
     packages: []
@@ -66,10 +66,10 @@ values: |
 
   resourcesCrossplane:
     limits:
-      cpu: 100m
-      memory: 512Mi
+      cpu: 1000m
+      memory: 4196Mi
     requests:
-      cpu: 100m
+      cpu: 1000m
       memory: 256Mi
 
   securityContextCrossplane:
@@ -80,7 +80,7 @@ values: |
 
   packageCache:
     medium: ""
-    sizeLimit: 5Mi
+    sizeLimit: 100Mi
     pvc: ""
 
   resourcesRBACManager:
