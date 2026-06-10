@@ -1,7 +1,0 @@
-apiVersion: v2
-name: crossplane-manifests
-description: Custom manifests for Crossplane
-
-type: application
-version: 0.1.0
-
