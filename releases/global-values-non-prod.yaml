@@ -6,7 +6,7 @@ project: controller
 
 source:
   server: https://kubernetes.default.svc
-  namespace: cd
+  namespace: argocd
 
 
 destination:
