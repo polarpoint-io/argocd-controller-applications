@@ -1,0 +1,53 @@
+chart:
+  name: backstage
+  url: https://backstage.github.io/charts
+  targetRevision: 2.8.1
+  namespace: platform
+
+labels:
+  service: platform
+  app: backstage
+
+syncPolicy:
+  prune: false
+  selfHeal: false
+
+values: |
+  fullnameOverride: backstage
+
+  global:
+    security:
+      allowInsecureImages: true
+
+  backstage:
+    image:
+      registry: docker.io
+      repository: polarpoint/backstage-app
+      tag: "1.3.0"
+      pullPolicy: IfNotPresent
+    containerPorts:
+      backend: 7007
+    command: ["node", "packages/backend"]
+    extraAppConfig:
+      - filename: app-config.production.yaml
+        configMapRef: backstage-app-config
+    extraEnvVars:
+      - name: POSTGRES_HOST
+        value: backstage-postgresql
+    extraEnvVarsSecrets:
+      - backstage-database-authentication
+      - backstage-kubernetes-authentication
+      - backstage-github-authentication
+
+  postgresql:
+    enabled: true
+    fullnameOverride: backstage-postgresql
+    image:
+      repository: bitnamilegacy/postgresql
+    auth:
+      username: backstage
+      database: backstage
+      existingSecret: backstage-db
+    primary:
+      persistence:
+        size: 8Gi
