@@ -29,6 +29,8 @@ values: |
       backend: 7007
     command: ["node", "packages/backend"]
     extraAppConfig:
+      - filename: app-config.yaml
+        configMapRef: backstage-app-config
       - filename: app-config.production.yaml
         configMapRef: backstage-app-config
     extraEnvVars:
