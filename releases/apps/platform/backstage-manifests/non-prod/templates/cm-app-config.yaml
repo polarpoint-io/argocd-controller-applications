@@ -231,6 +231,7 @@ data:
               clientId: ${AUTH_GITHUB_CLIENT_ID}
               clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
               privateKey: ${GITHUB_APP_PRIVATE_KEY}
+              webhookSecret: ${GITHUB_APP_WEBHOOK_SECRET}
 
     kubernetes:
       serviceLocatorMethod:
