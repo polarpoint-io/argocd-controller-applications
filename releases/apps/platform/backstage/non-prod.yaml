@@ -34,6 +34,12 @@ values: |
     extraEnvVars:
       - name: POSTGRES_HOST
         value: backstage-postgresql
+      - name: APP_CONFIG_backend_baseUrl
+        value: https://platform.polarpoint.io
+      - name: APP_CONFIG_backend_origin
+        value: https://platform.polarpoint.io
+      - name: APP_CONFIG_app_baseUrl
+        value: https://platform.polarpoint.io
     extraEnvVarsSecrets:
       - backstage-database-authentication
       - backstage-kubernetes-authentication

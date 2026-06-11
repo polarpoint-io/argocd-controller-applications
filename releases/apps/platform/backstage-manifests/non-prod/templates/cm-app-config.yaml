@@ -10,6 +10,19 @@ data:
     app:
       title: polarpoint
       baseUrl: https://{{ .Values.host }}
+      support:
+        url: https://github.com/polarpoint-io/backstage/issues
+        items:
+          - title: Issues
+            icon: github
+            links:
+              - url: https://github.com/backstage/backstage/issues
+                title: GitHub Issues
+          - title: Slack Chatroom
+            icon: chat
+            links:
+              - url: https://polarpoint.slack.com/archives/C03T35W09HC
+                title: '#backstage'
 
     organization:
       name: Polarpoint
