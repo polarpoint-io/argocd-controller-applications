@@ -36,6 +36,17 @@ values: |
       - backstage-database-authentication
       - backstage-kubernetes-authentication
       - backstage-github-authentication
+    extraVolumes:
+      - name: app-config
+        configMap:
+          name: backstage-app-config
+    extraVolumeMounts:
+      - name: app-config
+        mountPath: /app/app-config.yaml
+        subPath: app-config.yaml
+      - name: app-config
+        mountPath: /app/app-config.production.yaml
+        subPath: app-config.production.yaml
 
   postgresql:
     enabled: true
